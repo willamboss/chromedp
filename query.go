@@ -191,10 +191,9 @@ func (s *Selector) Do(ctx context.Context) error {
 		ids, err := s.by(ctx, fromNode)
 		if err != nil || len(ids) < s.exp {
 		        if err != nil {
-			
-		        	return false,err
-			}
-			return false, nil
+		                 return false,err
+		        }
+			return false, errors.New("NO_NODE")
 		}
 		nodes, err := s.wait(ctx, frame, execCtx, ids...)
 		// if nodes==nil, we're not yet ready
